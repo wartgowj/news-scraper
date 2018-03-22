@@ -4,12 +4,13 @@ $.getJSON("/headlines", function(data) {
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     $("#headlines").append("<p class=headline-title data-id='" + data[i]._id + "'>" + data[i].title + "</p>" + "<a href='" + data[i].link +"'target=blank>" + data[i].link + "</a>");
+    $("#headlines").append("<button class=comment-button data-id='" + data[i]._id + "'>COMMENTS</button>");
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(document).on("click", ".comment-button", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag

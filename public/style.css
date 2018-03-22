@@ -1,0 +1,80 @@
+   * {
+       box-sizing: border-box;
+   }
+   
+   body {
+       background-image: url("./crypto.jpg")
+   }
+
+   .header {
+       display: flex;
+       justify-content: space-between;
+       align-content: center;
+       background-color: lightgrey;
+       height: 10%;
+       font-size: 30px;
+       width: 100%;
+       position: fixed;
+       top: 0;
+       left: 0;
+       padding: 20px;
+   }
+   .main-title {
+       font-size: 50px;
+   }
+   .scrape-button {
+       background-color: rgb(77, 190, 156);
+       height: 50px;
+       font-size: 30px;
+
+   }
+   .comment-button {
+        background-color: rgb(77, 190, 156);
+       margin-left: 10px;
+   }
+
+   #wrapper {
+       width: 960px;
+       margin-left: auto;
+       margin-right: auto;
+       padding: 1%;
+       background-color: white;
+   }
+
+   #articles {
+       display: inline-block;
+       overflow: auto;
+       width: 60%;
+       height: 700px;
+   }
+
+   #notes {
+       float: right;
+       width: 30%;
+   }
+
+   textarea,
+   input {
+       display: block;
+       width: 100%;
+       background-color: #FCF5C7;
+   }
+
+   input {
+       height: 36px;
+       font-size: 24px;
+   }
+
+   textarea {
+       height: 200px;
+       font-size: 18px;
+   }
+
+   .headline-title {
+       font-size: 30px;
+       background-color: white;
+   }
+   a {
+       background-color: white;
+       font-size: 20px;
+   }

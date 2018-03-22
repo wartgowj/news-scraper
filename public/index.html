@@ -3,46 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Crypto News</title>
-    <style>
-      body { background-color: #F2F6D0 }
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
-      }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
-      }
-      #notes {
-        float: right;
-        width: 30%;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: #FCF5C7;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-      .headline-title {
-        font-size: 30px;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
+    <header>
+      <div class="header">
+          <div class="main-title">The Crypto News Scraper</div>
+          <div class="buttons">
+            <button class="scrape-button">Check for new Articles</button>  
+        </div>
+      </div>  
+    </header>
     <div id="wrapper">
-      <h1>The Crypto News</h1>
-      <h2><i>All the news that's worth knowing!!</i></h2>
+      <h1><i>All the news that's worth knowing!!</i></h1>
       <div id="headlines"></div>
       <div id="notes"></div>
     </div>

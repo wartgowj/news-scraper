@@ -14,6 +14,8 @@ module.exports = {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
 
+      const promises = [];
+
       // Now, we grab every h2 within an article tag, and do the following:
       $("h3").each(function(i, element) {
         // Save an empty result object
@@ -27,21 +29,28 @@ module.exports = {
           .children("a")
           .attr("href");
 
-        // Create a new Article using the `result` object built from scraping
-        db.Headline.create(result)
-          .then(function(dbHeadline) {
-            // View the added result in the console
-            console.log(dbHeadline);
-          })
-          .catch(function(err) {
-            // If an error occurred, send it to the client
-            return res.json(err);
-          });
+        if (result.title && result.link) {
+          console.log('creating article...', result.title);
+          promises.push(db.Headline.create(result))
+        }
+
       });
 
+      Promise.all(promises)
+        .then(function (dbHeadline) {
+          // View the added result in the console
+          // console.log(dbHeadline);
+          res.send("Scrape Complete");
+
+        })
+        .catch(function (err) {
+          // If an error occurred, send it to the client
+          // return res.json(err);
+        });
+
       // If we were able to successfully scrape and save an Article, send a message to the client
-      res.send("Scrape Complete");
-    });
+
+    }).catch(() => {});
   },
 
   getHeadlines: function(req, res) {
