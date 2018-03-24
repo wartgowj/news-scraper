@@ -20,7 +20,8 @@ router.get("/headlines", controller.getHeadlines);
 
 // Route for grabbing a specific Article by id, populate it with it's note
 router.get("/headlines/:id", controller.getHeadline);
-
+// Route for grabbing a Notes by id,
+router.get("/notes/:id", controller.getNote);
 // Route for saving/updating an Article's associated Note
 router.post("/headlines/:id", controller.updateHeadline);
 

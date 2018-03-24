@@ -49,15 +49,22 @@
    }
 
    #notes {
-       float: right;
-       width: 30%;
+       width: 50%;
+       position: fixed;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+   }
+   #notes,h2 {
+       background-color: lightgray;
+       margin-left: 10px;
    }
 
    textarea,
    input {
        display: block;
        width: 100%;
-       background-color: #FCF5C7;
+       background-color: rgb(77, 190, 156);
    }
 
    input {
@@ -66,7 +73,7 @@
    }
 
    textarea {
-       height: 200px;
+       height: 100px;
        font-size: 18px;
    }
 

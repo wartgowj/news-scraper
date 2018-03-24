@@ -8,12 +8,21 @@ $.getJSON("/headlines", function(data) {
   }
 });
 
+$(document).on("click", ".scrape-button", function(){
+  $.ajax({
+    method: "GET",
+    url: "/scrape"
+  }).then(function(){
+    location.reload();
+  })
+})
 
-// Whenever someone clicks a p tag
+
+// Whenever someone clicks a comment button
 $(document).on("click", ".comment-button", function() {
   // Empty the notes from the note section
   $("#notes").empty();
-  // Save the id from the p tag
+  // Save the id from the comment button
   var thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
@@ -23,15 +32,24 @@ $(document).on("click", ".comment-button", function() {
   })
     // With that done, add the note information to the page
     .then(function(data) {
-      console.log(data);
+      const noteArray = data.notes;
+      noteArray.forEach(function(id){
+        $.ajax({
+          method: "GET",
+          url: "/notes/"+ id
+        }).then(function(note){
+          $("#notes").append("<h5>User: " + note.user + "</h5>");
+          $("#notes").append("<h5>Comment: " + note.body + "</h5>");
+        })
+      })
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
+      $("#notes").append("<input id='userinput' name='user' placeholder='username'>");
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#notes").append("<textarea id='bodyinput' placeholder='enter comment' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Add comment</button>");
 
       // If there's a note in the article
       if (data.note) {
@@ -54,7 +72,7 @@ $(document).on("click", "#savenote", function() {
     url: "/headlines/" + thisId,
     data: {
       // Value taken from title input
-      title: $("#titleinput").val(),
+      user: $("#userinput").val(),
       // Value taken from note textarea
       body: $("#bodyinput").val()
     }
