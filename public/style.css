@@ -32,7 +32,7 @@
        line-height: 50px;
    }
    .main-title {
-       font-size: 50px;
+       font-size: 48px;
    }
    .scrape-button {
        background-color: rgb(77, 190, 156);
@@ -58,6 +58,7 @@
        padding: 1%;
        background-color: white;
        margin-bottom: 75px;
+       margin-top: 75px;
    }
 
    #articles {
